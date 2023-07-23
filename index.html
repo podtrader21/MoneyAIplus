@@ -169,34 +169,26 @@
       Seu navegador não suporta áudio.
     </audio>
 
-    <script>
-      // Restante do código JavaScript aqui...
-    </script>
+    <!-- Calculadora 1 -->
+    <div class="calculator">
+      <h1>IA DADOS</h1>
+      <button onclick="mostrarMensagemIA(document.getElementById('resultado'))">Obter Entrada</button>
+      <p class="resultado" id="resultado">-</p>
+    </div>
 
-    <a id="topo"></a> <!-- Âncora para abrir a página no topo -->
-    <img class="logo" src="https://document-export.canva.com/62AJ8/DAFpXw62AJ8/2/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20230721%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230721T234533Z&X-Amz-Expires=63409&X-Amz-Signature=c07d282ad02dd6008bd5e68962322b9b6f5f06219b62e14311976d8cad008c03&X-Amz-SignedHeaders=host&response-expires=Sat%2C%2022%20Jul%202023%2017%3A22%3A22%20GMT" alt="MoneyAI Logo"> <!-- Substitua "LOGO_URL" pelo URL da imagem do logotipo -->
-    <div class="container">
-      <!-- Calculadora 1 -->
-      <div class="calculator">
-        <h1>IA DADOS</h1>
-        <button onclick="mostrarMensagemIA(document.getElementById('resultado'))">Obter Entrada</button>
-        <p class="resultado" id="resultado">-</p>
-      </div>
+    <!-- Calculadora 2 -->
+    <div class="calculator white-text">
+      <h1>IA DOUBLE</h1>
+      <button onclick="mostrarMensagemIA(document.getElementById('resultado2'))">Obter Entrada</button>
+      <p class="resultado" id="resultado2">-</p>
+    </div>
 
-      <!-- Calculadora 2 -->
-      <div class="calculator white-text">
-        <h1>IA DOUBLE</h1>
-        <button onclick="mostrarMensagemIA(document.getElementById('resultado2'))">Obter Entrada</button>
-        <p class="resultado" id="resultado2">-</p>
-      </div>
-
-      <!-- Calculadora 3 (IA football) -->
-      <div class="calculator">
-        <h1>IA FOOTBALL</h1>
-        <button onclick="mostrarMensagemIA(document.getElementById('resultadoDragonTiger'))" style="margin-bottom: 12px;">Obter Entrada</button>
-        <div class="resultado" id="resultadoDragonTiger">
-          <p class="color-text">-</p>
-        </div>
+    <!-- Calculadora 3 (IA football) -->
+    <div class="calculator">
+      <h1>IA FOOTBALL</h1>
+      <button onclick="mostrarMensagemIA(document.getElementById('resultadoDragonTiger'))" style="margin-bottom: 12px;">Obter Entrada</button>
+      <div class="resultado" id="resultadoDragonTiger">
+        <p class="color-text">-</p>
       </div>
     </div>
 
@@ -225,6 +217,7 @@
     <button class="logout-button" onclick="logout()">Sair</button>
   </div>
 
+  <!-- Código JavaScript -->
   <script>
     // Função para ocultar a página de login e exibir a área restrita após o login bem-sucedido
     function showRestrictedPage() {
@@ -237,8 +230,12 @@
       var username = document.getElementById('username').value;
       var password = document.getElementById('password').value;
 
-      // Obter os logins salvos no painel administrativo
-      var loginsSalvos = JSON.parse(localStorage.getItem('logins')) || [];
+      // Obter os logins salvos no painel administrativo (substituir com os logins corretos)
+      var loginsSalvos = [
+        { username: "admin", password: "admin123" },
+        { username: "user1", password: "user123" },
+        // Adicione mais detalhes de login conforme necessário
+      ];
 
       // Verificar se o login fornecido está na lista de logins salvos
       for (var i = 0; i < loginsSalvos.length; i++) {
@@ -260,8 +257,47 @@
       document.getElementById('restrictedPage').style.display = 'none';
     }
 
-    // Chamando a função showWelcomeMessage para exibir a mensagem
-    showWelcomeMessage();
+    // Função para a Calculadora 1 (IA DADOS)
+    function mostrarMensagemIA(elementoResultado) {
+      // Simula uma resposta da IA DADOS
+      var mensagens = [
+        "Previsão: Amanhã será um dia ensolarado.",
+        "Previsão: Prepare-se para chuva.",
+        "Previsão: Temperaturas baixas esperadas para a próxima semana.",
+        "Previsão: Condições climáticas favoráveis para atividades ao ar livre.",
+        "Previsão: Possibilidade de neve nas regiões montanhosas.",
+      ];
+
+      // Escolhe aleatoriamente uma mensagem da IA e exibe no resultado
+      var mensagemAleatoria = mensagens[Math.floor(Math.random() * mensagens.length)];
+      elementoResultado.innerText = mensagemAleatoria;
+    }
+
+    // Função para a Calculadora 2 (IA DOUBLE)
+    function mostrarMensagemIA(elementoResultado) {
+      // Simula uma resposta da IA DOUBLE
+      var mensagens = [
+        "Resultado: Você dobrou o número!",
+        "Resultado: O dobro do número é surpreendente!",
+        "Resultado: Números dobrados trazem sorte!",
+        "Resultado: Você alcançou o dobro, parabéns!",
+        "Resultado: Duplicação bem-sucedida!",
+      ];
+
+      // Escolhe aleatoriamente uma mensagem da IA e exibe no resultado
+      var mensagemAleatoria = mensagens[Math.floor(Math.random() * mensagens.length)];
+      elementoResultado.innerText = mensagemAleatoria;
+    }
+
+    // Função para a Calculadora 3 (IA FOOTBALL)
+    function mostrarMensagemIA(elementoResultado) {
+      // Simula uma resposta da IA FOOTBALL
+      var resultados = ["Dragon", "Tiger", "Empate"];
+      var resultadoAleatorio = resultados[Math.floor(Math.random() * resultados.length)];
+
+      // Escolhe aleatoriamente um resultado da IA e exibe no resultado
+      elementoResultado.innerHTML = "<p class='color-text'>" + resultadoAleatorio + "</p>";
+    }
   </script>
 </body>
 </html>
